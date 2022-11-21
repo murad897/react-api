@@ -3,6 +3,9 @@ import { fetchBlogs } from "../../slices/blogSlice";
 import { connect, ConnectedProps } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { Blog } from "../../types";
+import { BlogBox } from "../Blog";
+import styles from  './Blogs.module.css';
+import { Navigation } from "../Navigation";
 
 const mapStateToProps = (state: RootState) => {
     return {
@@ -11,7 +14,7 @@ const mapStateToProps = (state: RootState) => {
 }
 
 const mapDispatchToProps = (dispatch: AppDispatch) =>({
-    fetchBlogs: () => dispatch(fetchBlogs())
+    fetchBlogs: () => dispatch(fetchBlogs({ page:1, limit:16 }))
 }) 
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -26,15 +29,18 @@ class Blogs extends React.Component<IProps> {
       const { blogs } = this.props;
       return (
        <main>
+        <Navigation />   
+        <div className={styles.blogsContainer}>
         {
           blogs.length > 1 ? blogs.map((item: Blog) => {
-            return <h1 key={item.id}>{item.id}</h1>
+            return <BlogBox key={item.id} id={item.id} title={item.title} url={item.url}/>
           }) : <p>loading</p>
         }
+        </div>   
+        <Navigation />   
        </main>
     );
   }
 }
-
 
 export default connector(Blogs);
