@@ -5,7 +5,7 @@ import { AppDispatch, RootState } from "../../store";
 import { Blog } from "../../types";
 import { BlogBox } from "../Blog";
 import styles from  './Blogs.module.css';
-import { Navigation } from "../Navigation";
+import  Navigation  from "../Navigation";
 
 const mapStateToProps = (state: RootState) => {
     return {
@@ -14,7 +14,7 @@ const mapStateToProps = (state: RootState) => {
 }
 
 const mapDispatchToProps = (dispatch: AppDispatch) =>({
-    fetchBlogs: () => dispatch(fetchBlogs({ page:1, limit:8 }))
+    fetchBlogs: () => dispatch(fetchBlogs({ page:1, limit:32 }))
 }) 
 
 const connector = connect(mapStateToProps, mapDispatchToProps);

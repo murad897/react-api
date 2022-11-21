@@ -18,6 +18,7 @@ export interface Blog {
 export interface BlogsState {
     list: Blog[];
     loading: boolean,
+    fullArrayLength: Blog[],
     limit: number,
     error: string | null,
 }
