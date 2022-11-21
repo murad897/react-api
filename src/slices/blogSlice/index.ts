@@ -28,7 +28,8 @@ const blogSlice = createSlice({
   initialState,
   reducers: {
     chooseLimit: (state, action:PayloadAction<number>) => {
-       state.limit = action.payload
+      console.log('fsdfs')
+      state.limit = action.payload
     }
   },
   extraReducers:(builder) => {

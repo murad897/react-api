@@ -1,10 +1,13 @@
-import { AppDispatch } from './../store/index';
-
 export interface ButtonProps {
     value: number;
     key:number;
-    limit?: number;
+    chooseLimit: (value:number) => void;
 };
+
+export interface HeaderProps {
+    limit: number;
+    chooseLimit: (value:number) => void;
+}
 
 export interface Blog {
     id: number,

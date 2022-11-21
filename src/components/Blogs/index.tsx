@@ -9,12 +9,12 @@ import { Navigation } from "../Navigation";
 
 const mapStateToProps = (state: RootState) => {
     return {
-        blogs: state.blogs.list
+        blogs: state.blogs.list,
     }
 }
 
 const mapDispatchToProps = (dispatch: AppDispatch) =>({
-    fetchBlogs: () => dispatch(fetchBlogs({ page:1, limit:16 }))
+    fetchBlogs: () => dispatch(fetchBlogs({ page:1, limit:8 }))
 }) 
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
