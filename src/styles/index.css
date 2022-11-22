@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+html,body {
+	font-family: 'Montserrat', sans-serif !important;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -40,4 +46,26 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+.container {
+	max-width: max-content;
+	border-radius: 5px;
+	margin: 0 auto;
+	border: 2px solid black;
+	margin-top: 50px;
+	padding: 10px;
+}
+
+.skeleton-container > span {
+	display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+    max-height: 600px;
+    overflow-y: hidden;
+}
+
+.skeleton-container > span br {
+  display: none;
 }
