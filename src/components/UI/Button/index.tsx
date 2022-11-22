@@ -3,13 +3,14 @@ import './Button.module.css';
 import { ButtonProps } from "../../../types";
 
 export class Button extends React.Component<ButtonProps> {
-  componentDidMount() {
-    console.log(this.props)
-  }
   render() {
     const { value } = this.props
     return (
-      <button onClick={() => this.props.chooseLimit(value)}>{ value }</button>
+      <button onClick={() => {
+        this.props.chooseLimit(value)
+        this.props.fetchBlogs(1, value)
+        this.props.changeCurrentPage()
+      } }>{ value }</button>
     );
   }
 }

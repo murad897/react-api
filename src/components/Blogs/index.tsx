@@ -14,7 +14,7 @@ const mapStateToProps = (state: RootState) => {
 }
 
 const mapDispatchToProps = (dispatch: AppDispatch) =>({
-    fetchBlogs: () => dispatch(fetchBlogs({ page:1, limit:32 }))
+    fetchBlogs: () => dispatch(fetchBlogs({ page:1, limit:8 }))
 }) 
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
