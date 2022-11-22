@@ -1,4 +1,6 @@
 import React from "react";
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { fetchBlogs } from "../../slices/blogSlice";
 import { connect, ConnectedProps } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
@@ -10,6 +12,7 @@ import  Navigation  from "../Navigation";
 const mapStateToProps = (state: RootState) => {
     return {
         blogs: state.blogs.list,
+        limit: state.blogs.limit
     }
 }
 
@@ -22,7 +25,9 @@ type IProps = ConnectedProps<typeof connector>;
 
 class Blogs extends React.Component<IProps> {
     componentDidMount() {
-      this.props.fetchBlogs()
+      setTimeout(() => {
+        this.props.fetchBlogs()
+      },700)
     }
     
     render() {
@@ -30,11 +35,20 @@ class Blogs extends React.Component<IProps> {
       return (
        <main>
         <Navigation />   
-        <div className={styles.blogsContainer}>
+        <div >
         {
-          blogs.length > 1 ? blogs.map((item: Blog) => {
-            return <BlogBox key={item.id} id={item.id} title={item.title} url={item.url}/>
-          }) : <p>loading</p>
+          blogs.length > 1 ? 
+          <div className={styles.blogsContainer}>
+            {
+               blogs.map((item: Blog) => {
+                return <BlogBox key={item.id} id={item.id} title={item.title} url={item.url}/>
+              })
+            }
+          </div>
+          : 
+          <div className="skeleton-container">
+             <Skeleton width={242} height={270} count={this.props.limit}/>
+          </div>
         }
         </div>   
         <Navigation />   

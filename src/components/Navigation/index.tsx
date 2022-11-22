@@ -35,12 +35,13 @@ class Navigation extends React.Component<IProps> {
     }
     componentDidUpdate(prev: IProps) {
       if (prev.page !== this.props.page) {
-        this.props.fetchBlogs(this.props.page, this.props.limit)
+        setTimeout(() => {
+          this.props.fetchBlogs(this.props.page, this.props.limit)
+        },700)
       }
     }
     
     render() {
-      console.log(this.props.page)
       return (
        <div className={styles.navigation}>
          <button onClick={() => {

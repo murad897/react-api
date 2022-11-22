@@ -1,17 +1,17 @@
 import { Blog, BlogsState } from './../../types/index';
 import { createSlice,  createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
 
-export const fetchBlogs = createAsyncThunk<Blog[],  { page:number, limit:number }>(
+export const fetchBlogs = createAsyncThunk<Blog[],  ({page:number, limit:number})>(
   'todos/fetchBlogs',
   async function (ApiData) {
     try {
       const {page, limit} = ApiData;
       const response = await fetch(`https://jsonplaceholder.typicode.com/photos?_page=${page}&_limit=${limit}`)
       const data = await response.json();
-      return data; 
+      return data
     }
     catch {
-      console.log('error')
+     return null
     }
   }
 );
@@ -25,7 +25,7 @@ export const fetchAllBlogs = createAsyncThunk<Blog[]>(
       return data; 
     }
     catch {
-      console.log('error')
+      return null
     }
   }
 );
@@ -50,6 +50,7 @@ const blogSlice = createSlice({
       state.limit = action.payload
     },
     nextPage: (state) => {
+      state.list = [];
       state.page ++ 
       state.currentStart += state.limit 
       state.currentEnd += state.limit
@@ -67,6 +68,7 @@ const blogSlice = createSlice({
     },
     prevPage: (state) => {
       if(state.page > 1) {
+       state.list = [];
        state.page --
        state.currentStart -= state.limit 
        state.currentEnd -= state.limit

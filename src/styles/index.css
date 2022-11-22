@@ -56,3 +56,16 @@ table {
 	margin-top: 50px;
 	padding: 10px;
 }
+
+.skeleton-container > span {
+	display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+    max-height: 600px;
+    overflow-y: hidden;
+}
+
+.skeleton-container > span br {
+  display: none;
+}
